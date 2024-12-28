@@ -1,0 +1,27 @@
+<app-authentication 
+  *ngIf="!isLoggedIn"
+  (loginSuccess)="updateLoginState(true, $event)">
+</app-authentication>
+
+<!-- Main Application Layout for Logged-In Users -->
+<div *ngIf="isLoggedIn" class="app-container">
+  <!-- Sidebar Navigation -->
+  <div class="sidebar bg-white shadow-sm">
+    <!-- Admin Navigation -->
+    <ng-container *ngIf="userRole === 'admin'">
+      <app-admin-navigation></app-admin-navigation>
+    </ng-container>
+    
+    <!-- User Navigation -->
+    <ng-container *ngIf="userRole === 'user'">
+      <app-user-navigation></app-user-navigation>
+    </ng-container>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <!-- Router Outlet for Dynamic Component Loading -->
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

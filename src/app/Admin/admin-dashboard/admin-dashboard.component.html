@@ -1,0 +1,200 @@
+<div class="container-fluid py-4">
+    <!-- Statistics Cards -->
+    <div class="row g-4 mb-4">
+      <!-- Total Users Card -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card stats-card bg-gradient-success text-white h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="stats-icon">
+                <i class="bi bi-people-fill"></i>
+              </div>
+            </div>
+            <h2 class="mb-1 display-5 fw-bold">{{ totalUsers }}</h2>
+            <p class="mb-0 fs-5">Total Users</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Active Trucks Card -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card stats-card bg-gradient-info text-white h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="stats-icon">
+                <i class="bi bi-truck"></i>
+              </div>
+            </div>
+            <h2 class="mb-1 display-5 fw-bold">{{ totalTrucks }}</h2>
+            <p class="mb-0 fs-5">Active Trucks</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Drivers Card -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card stats-card bg-gradient-warning text-white h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="stats-icon">
+                <i class="bi bi-person-badge"></i>
+              </div>
+            </div>
+            <h2 class="mb-1 display-5 fw-bold">{{ totalDrivers }}</h2>
+            <p class="mb-0 fs-5">Total Drivers</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Special Pickups Card -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card stats-card bg-gradient-purple text-white h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="stats-icon">
+                <i class="bi bi-calendar-check"></i>
+              </div>
+            </div>
+            <h2 class="mb-1 display-5 fw-bold">{{ totalSpecialPickups }}</h2>
+            <p class="mb-0 fs-5">Special Pickups</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Charts Row -->
+    <div class="row g-4">
+      <!-- Special Pickups Waste Distribution Chart -->
+      <div class="col-xl-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-transparent py-3">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-truck text-primary me-2"></i>
+              <h5 class="card-title mb-0">Special Pickups Waste Types</h5>
+            </div>
+          </div>
+          <div class="card-body">
+            <canvas id="specialPickupsChart" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Public Reports Waste Distribution Chart -->
+      <div class="col-xl-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-transparent py-3">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-file-earmark-text text-primary me-2"></i>
+              <h5 class="card-title mb-0">Public Reports Waste Types</h5>
+            </div>
+          </div>
+          <div class="card-body">
+            <canvas id="publicReportsChart" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Active Status Charts Row -->
+<div class="row g-4 mt-2">
+  <!-- Active Users Chart -->
+  <div class="col-xl-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-header bg-transparent py-3">
+        <div class="d-flex align-items-center">
+          <i class="bi bi-people text-primary me-2"></i>
+          <h5 class="card-title mb-0">User Activity Status</h5>
+        </div>
+      </div>
+      <div class="card-body">
+        <canvas id="activeUsersChart" height="250"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Drivers Chart -->
+  <div class="col-xl-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-header bg-transparent py-3">
+        <div class="d-flex align-items-center">
+          <i class="bi bi-person-badge text-primary me-2"></i>
+          <h5 class="card-title mb-0">Driver Activity Status</h5>
+        </div>
+      </div>
+      <div class="card-body">
+        <canvas id="activeDriversChart" height="250"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Trucks Chart -->
+  <div class="col-xl-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-header bg-transparent py-3">
+        <div class="d-flex align-items-center">
+          <i class="bi bi-truck text-primary me-2"></i>
+          <h5 class="card-title mb-0">Truck Activity Status</h5>
+        </div>
+      </div>
+      <div class="card-body">
+        <canvas id="activeTrucksChart" height="250"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+  <style>
+    .stats-card {
+      border: none;
+      border-radius: 1rem;
+      transition: transform 0.2s;
+    }
+  
+      .stats-card:hover {
+        transform: translateY(-5px);
+      }
+  
+    .stats-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+      .stats-icon i {
+        font-size: 1.5rem;
+      }
+  
+    .bg-gradient-success {
+      background: linear-gradient(45deg, #2ecc71, #27ae60);
+    }
+  
+    .bg-gradient-info {
+      background: linear-gradient(45deg, #3498db, #2980b9);
+    }
+  
+    .bg-gradient-warning {
+      background: linear-gradient(45deg, #e67e22, #d35400);
+    }
+  
+    .bg-gradient-purple {
+      background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    }
+  
+    .card {
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+  
+    .card-header {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Charts will be rendered by the component's initializeCharts method
+  </script>
